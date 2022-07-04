@@ -135,7 +135,7 @@ public class FileParserTest {
         when(this.genericMowerCommandFactory.getPositionAndOptionalOrientation("5 5")).thenReturn(maxPosition);
         when(this.genericMowerCommandFactory.getPositionAndOptionalOrientation("1 2 N")).thenReturn(firstPosition);
         when(this.genericMowerCommandFactory.createGenericMowerCommand("GAGAGAGAA", maxPosition)).thenReturn(genericFirstMowerCommandList);
-        when(this.genericMowerCommandFactory.getPositionAndOptionalOrientation("3 3 E")).thenReturn(firstPosition);
+        when(this.genericMowerCommandFactory.getPositionAndOptionalOrientation("3 3 E")).thenReturn(secondPosition);
         when(this.genericMowerCommandFactory.createGenericMowerCommand("AADAADADDA", maxPosition)).thenReturn(genericSecondMowerCommandList);
 
         Surface surface = fileParser.buildSurface(path);

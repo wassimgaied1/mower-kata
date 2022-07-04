@@ -22,20 +22,6 @@ public class GenericMowerCommandFactoryImpl implements GenericMowerCommandFactor
     public static final String SPACE = " ";
     private static final String regexNumber = "\\d+";
 
-    /**
-     * This method aims to create mower generic command
-     */
-    private static GenericMowerCommand buildGenericMowerCommand(Command command, Position maxPosition) {
-
-        if (command.equals(Command.A)) return new AdvanceMowerCommand(maxPosition, command);
-
-
-        else return new RotationMowerCommand(maxPosition, command);
-    }
-
-    private static Boolean isNumber(String input1, String input2) {
-        return (input1 + input2).matches(regexNumber);
-    }
 
     /**
      * This method aims to create list of mower generic command
@@ -65,6 +51,22 @@ public class GenericMowerCommandFactoryImpl implements GenericMowerCommandFactor
             return Position.builder().x(Integer.parseInt(positionSplitted[0])).y(Integer.parseInt(positionSplitted[1])).orientation(Orientation.getOrientationByLabel(positionSplitted[2])).build();
 
         else throw new MowerException(MowerError.MOWER_WRONG_MAX_LENGTH_OR_FORMAT);
+    }
+
+
+    /**
+     * This method aims to create mower generic command
+     */
+    private static GenericMowerCommand buildGenericMowerCommand(Command command, Position maxPosition) {
+
+        if (command.equals(Command.A)) return new AdvanceMowerCommand(maxPosition, command);
+
+
+        else return new RotationMowerCommand(maxPosition, command);
+    }
+
+    private static Boolean isNumber(String input1, String input2) {
+        return (input1 + input2).matches(regexNumber);
     }
 
 }
